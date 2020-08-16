@@ -5,6 +5,7 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>Parent_id</th>
       </tr>
     </thead>
 
@@ -12,6 +13,7 @@
       <% @categories.each do |category| %>
         <tr>
           <td><%= category.name %></td>
+          <td><%= category.parent_id %></td>
         </tr>
       <% end %>
     </tbody>

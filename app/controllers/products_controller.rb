@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  def new; end
+  def new
+    @categories = Category.all
+  end
 
   def index
     @products = Product.all
@@ -21,6 +23,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit :category_id, :name, :description, :price
+    params.require(:product).permit :category_id, :name, :description, :price, :quantity
   end
 end

@@ -4,10 +4,13 @@
   <table>
     <thead>
       <tr>
-        <th>category id</th>
+        <th>Category id</th>
         <th>Name</th>
         <th>Description</th>
-        <th>price</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>image</th>
+
       </tr>
     </thead>
 
@@ -18,6 +21,8 @@
           <td><%= product.name %></td>
           <td><%= product.description %></td>
           <td><%= product.price %></td>
+          <td><%= product.quantity %></td>
+          <td><%= product.image %></td>
         </tr>
       <% end %>
     </tbody>
