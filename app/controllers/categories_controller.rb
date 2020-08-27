@@ -2,7 +2,7 @@
 
 class CategoriesController < ApplicationController
   def new
-    @categories = Category.all
+    @categories = Category.new
   end
 
   def index
