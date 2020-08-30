@@ -22,6 +22,11 @@ group :test, :development do
   gem 'rspec-rails', '~> 4.0.0'
   gem 'rails-controller-testing'
 end
+
+gem 'devise'
+gem 'turbolinks'
+gem 'jquery-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
