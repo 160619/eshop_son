@@ -31,3 +31,13 @@
   <%= link_to 'new product', new_product_path %><br>
   <%= link_to 'home', root_path %>
 </div>
+<div class="row">
+  <div class="col-sm-6">
+    <h3>All Products</h3>
+    <ul>
+      <% @products.each do |product| %>
+      <li class="li-underline"><%= link_to product.name, product_path(product) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

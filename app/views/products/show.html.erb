@@ -1,0 +1,32 @@
+
+<h2><%= @product.name %></h2>
+<ul>
+ <li>Price: $<%= @product.price %></li>
+ <li>Description: <%= @product.description %></li>
+ <li>Quantity: <%= @product.quantity %></li>
+ <% if @product.reviews.any? %>
+   <li>Average Rating: <%= @product.reviews.average(:rating).round(2) %> / 5</li>
+ <% end %>
+</ul>
+
+<h4>Reviews for <%= @product.name %></h4>
+<% if @product.reviews.any? %>
+ <ul>
+   <% @product.reviews.order(:updated_at).reverse.each do |review| %>
+     <li><% review.rating.times do %><span class="star">★</span><% end %><% (5 - review.rating).times do %><span class="out-of">★</span><% end %><a href="<%= product_review_path(@product, review) %>">  <%= truncate(review.content, :length => 30) %></a></li>
+   <% end %>
+ </ul>
+<% else %>
+ <em>This product has 0 reviews, <%= link_to "Add one now!", new_product_review_path(@product) %></em>
+<% end %>
+
+<hr>
+<ul class="sub-links">
+ <li><%= link_to "Return to products", products_path %></li>
+ <% if !current_user %><li><em>To review a product, please <a href="/signin">Log in</a>, or <a href="/signup">Sign up</a></em></li><% end %>
+ <% if current_user %>
+   <li><%= link_to "Add a review", new_product_review_path(@product) %></li>
+   <li><%= link_to "Edit", edit_product_path(@product) %></li>
+   <li><%= link_to "Delete", product_path(@product.id), :data => {:confirm => "You sure?", :method => "delete"}   %></li>
+ <% end %>
+</ul>

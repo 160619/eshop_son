@@ -2,7 +2,8 @@
 <%= form_for Category.new ,url: categories_path do |f| %>
 <div class="form-group">
   <%= f.label :parent_id %>
-  <%= f.collection_select :parent_id , @categories, :id,  :name, include_blank: true %>
+  <%= f.collection_select :parent_id, Category.all, :id, :name,prompt: "Select Category" %>
+
 </div>
   <div class="form-group">
     <%= f.label :name %>
