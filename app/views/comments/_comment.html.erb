@@ -1,0 +1,7 @@
+<%= form_for ([review , @comment]) do |f| %>
+  <%= f.label :body, "REPLY:" %>
+  <br>
+  <%= f.text_area :body %>
+  <br>
+  <%= f.submit "Submit Reply" ,class: 'btn btn-primary btn-lg' %>
+  <% end %>

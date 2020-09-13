@@ -11,6 +11,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @review = @product.reviews.new
+    @comment = @review.comments.new
   end
 
   def create
@@ -44,7 +46,7 @@ class ProductsController < ApplicationController
       redirect_to products_path
     end
   end
-  
+
   private
 
   def product_params

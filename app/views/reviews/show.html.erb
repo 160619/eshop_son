@@ -1,9 +1,26 @@
-<h3><%=  %>'s review for <%= @product.name %></h3>
+<h3><%= %>review for
+  <%= @product.name %></h3>
 <p><%= @review.content %></p>
-<p><% @review.rating.times do %><span class="star">★</span><% end %><% (5 - @review.rating).times do %><span class="out-of">★</span><% end %></p>
+<p>
+  <% @review.rating.times do %>
+    <span class="star">★</span><% end %>
+  <% (5 - @review.rating).times do %>
+    <span class="out-of">★</span><% end %>
+</p>
 
 <hr>
+<% if user_signed_in? %>
+  <%= render "comments/comment" %>
+<% end %>
+
+<ul>
+  <% @review.comments.order(:updated_at).reverse.each do |comment| %>
+  <li> Reply: <%= truncate(comment.body, :length => 30) %></li>
+  <% end %>
+
 <ul class="sub-links">
+  <%= link_to 'Add new topic', class: 'btn btn-primary btn-lg' %>
+
   <li><%= link_to "Return to product", product_path(@product) %></li>
 
 </ul>
