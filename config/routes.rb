@@ -11,6 +11,15 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  namespace :admin do
+    root 'static_pages#index'
+    resources :categories
+    resources :products
+    resources :reviews
+    resources :comments
+    resources :users, only: [:index]
+  end
+
   get 'static_pages/home'
   devise_for :users
   root 'static_pages#home'

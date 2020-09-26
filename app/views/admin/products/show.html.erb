@@ -1,0 +1,19 @@
+
+<h2><%= @product.name %></h2>
+<ul>
+ <li>Price: $<%= @product.price %></li>
+ <li>Description: <%= @product.description %></li>
+ <li>Quantity: <%= @product.quantity %></li>
+ <% if @product.reviews.any? %>
+   <li> Review rating: <%= @product.aggregate_rating %> / 5</li>
+ <% end %>
+</ul>
+
+<ul class="sub-links">
+ <li><%= link_to "Return to products", products_path %></li>
+ <% if !current_user %><li><em>To review a product, please <a href="/signin">Log in</a>, or <a href="/signup">Sign up</a></em></li><% end %>
+ <% if current_user %>
+   <li><%= link_to "Edit", edit_product_path(@product) %></li>
+   <li><%= link_to "Delete", product_path(@product.id), :data => {:confirm => "You sure?", :method => "delete"}   %></li>
+ <% end %>
+</ul>

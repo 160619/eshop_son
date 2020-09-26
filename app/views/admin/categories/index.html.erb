@@ -1,0 +1,24 @@
+<h1>Categories#index</h1>
+<p>Find me in app/views/categories/index.html.erb</p>
+<div class="">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Parent_id</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.parent_id %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'new category', new_admin_category_path %><br>
+  <%= link_to 'home', root_path %>
+</div>
