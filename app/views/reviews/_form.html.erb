@@ -1,4 +1,6 @@
-<%= form_for [@product, @review] do |f| %>
+<%= form_for [@product, @review], remote: true, html: { id:"new_review" } do |f| %>
+<%= current_user.email %>
+
   <%= f.label :content, "Write your review below" %>
   <%= f.text_area :content %>
   <%= f.label :rating, "Rate this product" %>
@@ -9,5 +11,6 @@
     ["4", 4],
     ["5", 5]
     ])) %>
+    <br>
   <%= f.submit "Submit Review" %>
 <% end %>

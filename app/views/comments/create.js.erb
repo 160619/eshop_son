@@ -1,0 +1,11 @@
+commentList = document.getElementById('comments_of_review_<%= @comment.review_id %>');
+
+newCommentItem = document.createElement('li');
+
+newCommentItem.appendChild(
+  document.createTextNode('<%= @comment.user.email %>: <%= @comment.body %>')
+);
+
+commentList.appendChild(newCommentItem);
+
+document.getElementById("new_comment_of_review_<%= @comment.review_id %>").reset();

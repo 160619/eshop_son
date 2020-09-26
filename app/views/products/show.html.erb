@@ -1,43 +1,75 @@
-
 <h2><%= @product.name %></h2>
 <ul>
- <li>Price: $<%= @product.price %></li>
- <li>Description: <%= @product.description %></li>
- <li>Quantity: <%= @product.quantity %></li>
- <% if @product.reviews.any? %>
-   <li> Review rating: <%= @product.aggregate_rating %> / 5</li>
- <% end %>
+  <li>Price: $<%= @product.price %></li>
+  <li>Description:
+    <%= @product.description %></li>
+  <li>Quantity:
+    <%= @product.quantity %></li>
+  <% if @product.reviews.any? %>
+    <li>
+      Review rating:
+      <%= @product.aggregate_rating %>
+      / 5</li>
+  <% end %>
 </ul>
 
-<h4>Reviews for <%= @product.name %></h4>
-<% if @product.reviews.any? %>
- <ul>
-   <% @product.reviews.order(:updated_at).reverse.each do |review| %>
-     <li><% review.rating.times do %><span class="star">★</span><% end %><% (5 - review.rating).times do %><span class="out-of">★</span><% end %> <%= truncate(review.content, :length => 30) %></li>
-
-     <%= render 'comments/comment', review: review %>
-        <% if review.comments.any? %>
-        <% review.comments.each do |comment| %>
-          <li>Comment: <%= comment.body %> </li>
-        <% end %>
-     <% end %>
-
-   <% end %>
- </ul>
-<% else %>
-
- <em>This product has 0 reviews </em>
-<% end %>
+<h4>Reviews for
+  <%= @product.name %></h4>
 <% if user_signed_in? %>
   <%= render "reviews/form" %>
 <% end %>
 
+<% if @product.reviews.any? %>
+  <div id='reviews'>
+    <% @product.reviews.order(:updated_at).reverse.each do |review| %>
+
+      <div id="review_item_<%= review.id %>">
+        <li>
+          <%= current_user.email %>
+          <% review.rating.times do %>
+            <span class="star">★</span>
+          <% end %>
+          <% (5 - review.rating).times do %>
+            <span class="out-of">★</span>
+          <% end %>
+          <%= truncate(review.content, :length => 30) %>
+        </li>
+        <p>
+          ------------------------------------
+        </p>
+
+        <ul id='comments_of_review_<%= review.id %>'>
+          <% review.comments.each do |comment| %>
+            <li>
+              <p><%= comment.user.email %>:
+                <%= comment.body %>
+              </p>
+            </li>
+          <% end %>
+        </ul>
+
+        <%= render 'comments/comment', review: review, comment: @comment %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+
+  <em>This product has 0 reviews
+  </em>
+<% end %>
 <hr>
 <ul class="sub-links">
- <li><%= link_to "Return to products", products_path %></li>
- <% if !current_user %><li><em>To review a product, please <a href="/signin">Log in</a>, or <a href="/signup">Sign up</a></em></li><% end %>
- <% if current_user %>
-   <li><%= link_to "Edit", edit_product_path(@product) %></li>
-   <li><%= link_to "Delete", product_path(@product.id), :data => {:confirm => "You sure?", :method => "delete"}   %></li>
- <% end %>
+  <li><%= link_to "Return to products", products_path %></li>
+  <% if !current_user %>
+    <li>
+      <em>To review a product, please
+        <a href="/signin">Log in</a>, or
+        <a href="/signup">Sign up</a>
+      </em>
+    </li>
+  <% end %>
+  <% if current_user %>
+    <li><%= link_to "Edit", edit_product_path(@product) %></li>
+    <li><%= link_to "Delete", product_path(@product.id), :data => {:confirm => "You sure?", :method => "delete"} %></li>
+  <% end %>
 </ul>
