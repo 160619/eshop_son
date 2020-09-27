@@ -3,6 +3,9 @@
 namespace :db do
   desc 'TODO'
   task fake_data: :environment do
+    
+    User.create(email:'demoadmin@gmail.com', password:'111111', password_confirmation: '111111', role:'admin')
+
     mang = ['Samsung', 'Macbook', 'Asus', 'Acer', 'IPhone', 'IPad', "Dell", 'LG', 'HP', 'Lenovo']
 
       mang.each do |category_name|

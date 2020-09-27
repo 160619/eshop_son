@@ -11,65 +11,76 @@
       <%= @product.aggregate_rating %>
       / 5</li>
   <% end %>
+  <p>
+    <strong>Avg rating:</strong>
+    <span id="aggregate_rating">
+      <% if @product.reviews.any? %>
+        <%= @product.aggregate_rating %>
+        / 5
+      <% else %>
+        not have any reviews
+      <% end %>
+    </span>
+  <p>
 </ul>
 
-<h4>Reviews for
-  <%= @product.name %></h4>
-<% if user_signed_in? %>
-  <%= render "reviews/form" %>
-<% end %>
-
-<% if @product.reviews.any? %>
-  <div id='reviews'>
-    <% @product.reviews.order(:updated_at).reverse.each do |review| %>
-
-      <div id="review_item_<%= review.id %>">
-        <li>
-          <%= current_user.email %>
-          <% review.rating.times do %>
-            <span class="star">★</span>
-          <% end %>
-          <% (5 - review.rating).times do %>
-            <span class="out-of">★</span>
-          <% end %>
-          <%= truncate(review.content, :length => 30) %>
-        </li>
-        <p>
-          ------------------------------------
-        </p>
-
-        <ul id='comments_of_review_<%= review.id %>'>
-          <% review.comments.each do |comment| %>
-            <li>
-              <p><%= comment.user.email %>:
-                <%= comment.body %>
-              </p>
-            </li>
-          <% end %>
-        </ul>
-
-        <%= render 'comments/comment', review: review, comment: @comment %>
-      </div>
+    <h4>Reviews for
+      <%= @product.name %></h4>
+    <% if user_signed_in? %>
+      <%= render "reviews/form" %>
     <% end %>
-  </div>
-<% else %>
 
-  <em>This product has 0 reviews
-  </em>
-<% end %>
-<hr>
-<ul class="sub-links">
-  <li><%= link_to "Return to products", products_path %></li>
-  <% if !current_user %>
-    <li>
-      <em>To review a product, please
-        <a href="/signin">Log in</a>, or
-        <a href="/signup">Sign up</a>
+    <% if @product.reviews.any? %>
+      <div id='reviews'>
+        <% @product.reviews.order(:updated_at).reverse.each do |review| %>
+
+          <div id="review_item_<%= review.id %>">
+            <li>
+              <%= current_user.email %>
+              <% review.rating.times do %>
+                <span class="star">★</span>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <span class="out-of">★</span>
+              <% end %>
+              <%= truncate(review.content, :length => 30) %>
+            </li>
+            <p>
+              ------------------------------------
+            </p>
+
+            <ul id='comments_of_review_<%= review.id %>'>
+              <% review.comments.each do |comment| %>
+                <li>
+                  <p><%= comment.user.email %>:
+                    <%= comment.body %>
+                  </p>
+                </li>
+              <% end %>
+            </ul>
+
+            <%= render 'comments/comment', review: review, comment: @comment %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+
+      <em>This product has 0 reviews
       </em>
-    </li>
-  <% end %>
-  <% if current_user %>
-    <li><%= link_to "Edit", edit_product_path(@product) %></li>
-    <li><%= link_to "Delete", product_path(@product.id), :data => {:confirm => "You sure?", :method => "delete"} %></li>
-  <% end %>
-</ul>
+    <% end %>
+    <hr>
+    <ul class="sub-links">
+      <li><%= link_to "Return to products", products_path %></li>
+      <% if !current_user %>
+        <li>
+          <em>To review a product, please
+            <a href="/signin">Log in</a>, or
+            <a href="/signup">Sign up</a>
+          </em>
+        </li>
+      <% end %>
+      <% if current_user %>
+        <li><%= link_to "Edit", edit_product_path(@product) %></li>
+        <li><%= link_to "Delete", product_path(@product.id), :data => {:confirm => "You sure?", :method => "delete"} %></li>
+      <% end %>
+    </ul>
