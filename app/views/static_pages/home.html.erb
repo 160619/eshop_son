@@ -4,6 +4,12 @@
 <%# <%= link_to 'product', products_path %>
 <%# <%= link_to 'login', new_user_session_path %>
 <%# <%= link_to 'logout', destroy_user_session_path, method: :delete %>
-<%# <%= link_to 'admin', admin_root_path %>  
+<%# <%= link_to 'admin', admin_root_path %>
 
-<%= render 'shared/content' %>
+<%# <%= render 'shared/content' %> 
+
+<% products = Product.all %>
+
+<% products.each do |product| %>
+<%= render partial: "products/product", locals: { product: product} %>
+<% end %>
