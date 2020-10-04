@@ -1,3 +1,327 @@
 // Place all the styles related to the Static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  padding-top: 50px;
+}
+#container{
+
+	margin : 0 auto;
+    overflow:hidden;
+}
+#tittlelogo {
+    height: 100px;
+    text-align:center;
+}
+
+#headermain{
+    width: 100%;
+    height: auto;
+}
+#headermain div{
+    display:inline-table;
+}
+
+#header ul {
+    list-style-type: none;
+
+}
+    #header ul li {
+        display: inline-table;
+        padding: 20px;
+        color: black;
+    }
+#header ul li a {
+    text-align:center;
+    text-decoration:none;
+    display : block;
+    color:black;
+
+}
+#header ul li:hover {
+    background-color:orangered;
+
+}
+
+#menuright {
+    float: right;
+    width: 30%;
+    z-index: 1000000000000;
+}
+#menuright ul{
+
+}
+
+#menuright ul li {
+        display: inline-block;
+        position: relative;
+        font-size:18px;
+        border-radius:5px;
+        padding : 5px;
+
+}
+#menuright ul li a {
+    text-align:center;
+}
+
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    z-index: 1000000000000;
+    background-color: antiquewhite;
+    width: 180px;
+    transition: 0.6s;
+    margin: 0 auto;
+    text-align: left;
+    margin-left: -100px;
+    line-height:50px;
+}
+.sub-menu li {
+
+        display: block;
+        padding: 10px;
+        width:150px;
+        margin:0 auto;
+    }
+    .sub-menu li a {
+        text-decoration: none;
+        color: black;
+        margin: 10px;
+
+    }
+        .sub-menu li:hover {
+            background-color: navajowhite;
+        }
+.icon{
+    width:40px;
+    height:40px;
+}
+
+#menuright ul li:hover .sub-menu{
+    display : block;
+}
+
+    .search input {
+        width: 180px;
+        box-sizing: border-box;
+        border: 1px solid black;
+        border-radius: 10px;
+        outline: none;
+        padding: 12px 14px;
+        transition: 0.6s ease-in-out;
+    }
+.search input:focus {
+            width: 230px;
+            background-color: floralwhite;
+        }
+
+
+.slideshow-container {
+    max-width: 2000px;
+    position: relative;
+    margin: auto;
+    transition: background-color 0.6s ease;
+}
+/* Ẩn các slider */
+.mySlides {
+    display: none;
+}
+/* Định dạng nội dung Caption */
+
+
+/* định dạng các chấm chuyển đổi các slide */
+.dot {
+    cursor: pointer;
+    height: 13px;
+    width: 13px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+    /* khi được hover, active đổi màu nền */
+    .active, .dot:hover {
+        background-color: #717171;
+    }
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 3s;
+    animation-name: fade;
+    animation-duration: 3s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+
+
+
+
+#body{
+	padding-top:50px;
+	width: 70%;
+	text-align:center;
+	margin : 0 auto;
+}
+.bodyimg{
+	width: 237px;
+	height : 237px;
+}
+#body ul{
+	list-style-type:none;
+
+}
+#body ul li {
+	display:inline-table;
+	padding: 20px;
+}
+#body1{
+	width : 237px;
+	height : 411px;
+	overflow:hidden;
+
+}
+#body12{
+	float : right;
+}
+.info {
+	float : left;
+	width : 75%;
+	line-height: 1.5;
+	text-align:left;
+}
+#banner{
+	height:250px;
+}
+
+#section2{
+	padding-top:40px;
+    height:1000px;
+    width:100%;
+}
+#sectiontitle{
+	height : 50px;
+}
+#leftsc {
+	width: 30%;
+	float: left;
+	padding-top: 70px;
+}
+#leftsc a {
+		font-size: 18px;
+		text-align: center;
+		line-height: 28px;
+		text-transform: uppercase;
+	}
+
+#content-container-sc2{
+    float:right;
+    width:70%;
+    overflow:hidden;
+}
+
+    #content-container-sc2 ul li {
+        width: 20%;
+        display:inline-table;
+    }
+
+#row1-content-sc2 {
+    width: 100%;
+
+}
+
+.info2 {
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+    color: black;
+    text-align:left;
+    font-size:16px;
+}
+
+
+
+
+
+#footer{
+    height:auto;
+    width:2000px;
+    text-align:left;
+    margin : 0 auto;
+}
+
+
+div.lienhe {
+    float: left;
+    padding: 0px 30px;
+    width: 20%;
+    height: 331px;
+    background-color: #000;
+    color: #CCC;
+}
+.lienhe ul{
+    list-style-type:none;
+}
+
+    div.lienhe > ul > li {
+        padding: 8px;
+    }
+
+div.chinhsach {
+    float: left;
+    width: 20%;
+    height: 331px;
+    background-color: #000;
+
+}
+    div.chinhsach ul li a ,h3{
+        color: white;
+        text-decoration : none;
+        display:block;
+        padding : 10px;
+    }
+
+
+div.lienket {
+    float: left;
+    width: 20%;
+    height: 331px;
+    background-color: #000;
+    color: #CCC;
+}
+
+    div.lienket > ul > li {
+        padding: 8px;
+        display: block;
+    }
+
+div.chinhsach > ul {
+    list-style-type: none;
+}
+
+div.logo {
+    float: left;
+    width: 35%;
+    height : 331px;
+    background-color: #000;
+}

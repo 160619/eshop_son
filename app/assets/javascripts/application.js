@@ -1,4 +1,3 @@
-
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -20,9 +19,9 @@ $(document).on("ready turbolinks:load", function() {
     .on("ajax:success", function(event) {
       var data, status, xhr, _ref;
       (_ref = event.detail),
-        (data = _ref[0]),
-        (status = _ref[1]),
-        (xhr = _ref[2]);
+      (data = _ref[0]),
+      (status = _ref[1]),
+      (xhr = _ref[2]);
       $("#reviews").append(renderReviewItem(data));
       $("#aggregate_rating").html(data.product.aggregate_rating);
       $("#new_review")[0].reset();
