@@ -23,6 +23,11 @@ group :test, :development do
   gem 'rails-controller-testing'
 end
 
+gem 'rubocop', require: false
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
+gem 'carrierwave'
+gem 'faker'
 gem 'devise'
 gem 'turbolinks'
 gem 'jquery-rails'
